@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">AKA Shoe Store</string>
+    <string name="login_shoe_store">Login Shoe Store</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Register</string>
+    <string name="welcome_aka_shoe_store">Welcome AKA Shoe Store</string>
+    <string name="skip">skip</string>
+    <string name="instruction_aka_shoe_store">Management shoes easily</string>
+    <string name="sub_instruction">Display the store\'s shoe list and edit them easily with just a smartphone</string>
+    <string name="let_s_go">Let\'s go!</string>
+    <string name="let_s_do_it">Let\'s do it</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="amount">Amount</string>
+    <string name="create_new_shoe">Create New Shoe</string>
+    <string name="name_shoe">Name Shoe</string>
+    <string name="price_shoe">Price Shoe</string>
+    <string name="description_shoe">Description Shoe</string>
+    <string name="create">Create</string>
+</resources>

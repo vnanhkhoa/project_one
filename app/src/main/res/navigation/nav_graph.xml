@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.khoavna.shoestore.ui.login.LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.khoavna.shoestore.ui.onboarding.OnboardingFragment"
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_listShoeFragment"
+            app:destination="@id/listShoeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listShoeFragment"
+        android:name="com.khoavna.shoestore.ui.shoe.list.ListShoeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_list_shoe" >
+        <action
+            android:id="@+id/action_listShoeFragment_to_shoeDetailFragment"
+            app:destination="@id/shoeDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/shoeDetailFragment"
+        android:name="com.khoavna.shoestore.ui.shoe.detail.ShoeDetailFragment"
+        android:label="Shoe Detail" >
+        <argument
+            android:name="shoe"
+            app:argType="com.khoavna.shoestore.data.model.Shoe" />
+    </fragment>
+
+</navigation>
