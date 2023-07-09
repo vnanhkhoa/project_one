@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.khoavna.shoestore.R
 import com.khoavna.shoestore.databinding.FragmentOnboardingBinding
 import com.khoavna.shoestore.ui.onboarding.adapter.OnboardingPageAdapter
 
@@ -35,7 +37,10 @@ class OnboardingFragment : Fragment(), FragmentResultListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_onboarding,container, false)
+        binding.also {
+            it.viewModel = viewModel
+        }
         return binding.root
     }
 
@@ -59,10 +64,7 @@ class OnboardingFragment : Fragment(), FragmentResultListener {
         viewModel.pageCurrent.observe(requireActivity()) {
             binding.vp2Onboarding.currentItem = it
         }
-        childFragmentManager.also {
-            it.setFragmentResultListener(CHANGE_PAGE_REQUEST_KEY, this, this)
-            it.setFragmentResultListener(GO_TO_SHOE_LIST_REQUEST_KEY, this, this)
-        }
+
     }
 
     private fun initListener() {

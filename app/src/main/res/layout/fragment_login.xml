@@ -109,6 +109,7 @@
         android:text="@string/register"
         android:textSize="@dimen/sp_16"
         android:textStyle="bold"
+        android:gravity="center"
         app:backgroundTint="#2196F3"
         app:cornerRadius="@dimen/dp_30"
         app:layout_constraintBottom_toBottomOf="parent"
