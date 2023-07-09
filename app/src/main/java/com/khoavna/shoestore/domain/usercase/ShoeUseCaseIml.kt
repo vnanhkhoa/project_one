@@ -3,10 +3,11 @@ package com.khoavna.shoestore.domain.usercase
 import com.khoavna.shoestore.data.model.Shoe
 import com.khoavna.shoestore.data.repositores.shoe.ShoeRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 class ShoeUseCaseIml(private val shoeRepository: ShoeRepository) : ShoeUseCase {
 
-    override fun getListShoe(): Flow<List<Shoe>> = shoeRepository.getShoes()
+    override fun getListShoe(): StateFlow<List<Shoe>> = shoeRepository.getShoes()
 
     override fun getShoe(id: Int): Flow<Shoe?> = shoeRepository.getShoe(id = id)
 
@@ -14,7 +15,7 @@ class ShoeUseCaseIml(private val shoeRepository: ShoeRepository) : ShoeUseCase {
         shoeRepository.delete(shoe = shoe)
     }
 
-    override fun newShoe(shoe: Shoe) {
+    override fun createShoe(shoe: Shoe) {
         shoeRepository.insert(shoe = shoe)
     }
 

@@ -13,6 +13,6 @@ class ListShoeViewModel : ViewModel() {
     val shoes = shoeUseCase.getListShoe().asLiveData()
 
     fun addShoe(shoe: Shoe) {
-        shoeUseCase.newShoe(shoe)
+        shoeUseCase.createShoe(shoe)
     }
 }

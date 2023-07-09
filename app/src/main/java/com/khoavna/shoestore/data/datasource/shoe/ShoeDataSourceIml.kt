@@ -3,12 +3,14 @@ package com.khoavna.shoestore.data.datasource.shoe
 import com.khoavna.shoestore.data.model.Shoe
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.update
 
 class ShoeDataSourceIml : ShoeDataSource {
     private val shoes = MutableStateFlow(
-        mutableListOf(
+        listOf(
             Shoe(
                 id = 1,
                 name = "NiKe",
@@ -58,23 +60,31 @@ class ShoeDataSourceIml : ShoeDataSource {
         )
     )
 
-    override fun findAll(): Flow<List<Shoe>> = shoes.asStateFlow()
+    override fun findAll(): StateFlow<List<Shoe>> = shoes.asStateFlow()
 
     override fun findOne(id: Int): Flow<Shoe?> = flow {
         shoes.value.find { it.id == id }
     }
 
     override fun delete(shoe: Shoe) {
-        shoes.value.remove(shoe)
+        shoes.update {
+            it.filter { item ->
+                item.id == shoe.id
+            }
+        }
     }
 
     override fun insert(shoe: Shoe) {
-        shoe.copy(id = shoes.value.size).let {
-            shoes.value.add(it)
+        shoes.update {
+            it + shoe.copy(id = it.size)
         }
     }
 
     override fun update(shoe: Shoe) {
-        shoes.value.replaceAll { if (it.id == shoe.id) shoe else it }
+        shoes.update {
+            it.map { item ->
+                if (item.id == shoe.id) shoe else item
+            }
+        }
     }
 }
